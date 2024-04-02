@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/02 16:27:55 by vdarras           #+#    #+#             */
+/*   Updated: 2024/04/02 18:40:23 by vdarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static size_t		count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
 	size_t	words;
 	size_t	indice;
@@ -24,7 +36,7 @@ static size_t		count_words(char const *s, char c)
 	return (words);
 }
 
-static char		*words(const char *s, char sep)
+static char	*words(const char *s, char sep)
 {
 	size_t	i;
 	size_t	j;
@@ -32,7 +44,7 @@ static char		*words(const char *s, char sep)
 
 	i = 0;
 	j = 0;
-	while (s[j] && s[j] != sep )
+	while (s[j] && s[j] != sep)
 		j++;
 	new_s = malloc((j + 1) * sizeof(char));
 	if (!new_s)
@@ -46,7 +58,22 @@ static char		*words(const char *s, char sep)
 	return (new_s);
 }
 // FREE FUNCTION IF MALLOC FAILS
-char        **ft_split(char const *s, char c)
+
+void	loop(const char **s, char c, int i)
+{
+	if (i == 0)
+	{
+		while (**s && **s == c)
+			(*s)++;
+	}
+	else
+	{
+		while (**s && **s != c)
+			++*s;
+	}
+}
+
+char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	char	**array;
@@ -54,23 +81,22 @@ char        **ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	if (!(array = malloc((count_words(s, c) + 1) * sizeof(char *))))
+	array = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!array)
 		return (NULL);
+	i = -1;
 	array[count_words(s, c)] = NULL;
 	while (*s)
 	{
-		while (*s && *s == c)
-			s++;
+		loop(&s, c, 0);
 		if (*s != '\0')
 		{
 			word = words(s, c);
 			if (!word)
 				return (NULL);
-			array[i++] = word;
+			array[++i] = word;
 		}
-		while (*s && *s != c)
-			s++;
+		loop(&s, c, 1);
 	}
 	return (array);
 }
@@ -80,7 +106,7 @@ int main(void)
 	char c = ' ';
 	char const *s = "   Je  suis  un    humain   ";
 	char	**array = ft_split(s, c);
-	printf("%s\n%s\n%s\n%s\n%s", array[0], array[1], array[2], array[3],array[4]);
-	return (0);  
+	printf("%s\n%s", array[0], array[1]);
+	return (0);
 }
 */

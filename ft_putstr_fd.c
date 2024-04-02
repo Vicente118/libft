@@ -1,10 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/02 16:27:54 by vdarras           #+#    #+#             */
+/*   Updated: 2024/04/02 17:54:59 by vdarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void        ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    while(*s)
-    {
-        write(fd, s, 1);
-        s++;
-    }
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
 }
+/*
+int main(void)
+{
+	return (0);
+}
+*/

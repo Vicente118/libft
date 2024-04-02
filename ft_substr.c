@@ -1,31 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/02 16:28:15 by vdarras           #+#    #+#             */
+/*   Updated: 2024/04/02 20:04:44 by vdarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char    *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-    char    *str;
-    size_t  slen;
-    size_t  i;
+	char	*str;
+	size_t	slen;
+	size_t	i;
 
-    slen = ft_strlen((char *) s);
-    str = malloc(sizeof(char) * slen);
-    i = 0;
-    if (!str || !s)
-        return (NULL);
-    while (*s && i < len && start < slen)
-    {
-        str[i] = *(char *)(s + start);
-        i++;
-        start++;
-    }
-    return (str); 
+	if (!s)
+		return (NULL);
+	slen = len;
+	if (ft_strlen(s) - start < len)
+		slen = ft_strlen(s);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	str = malloc(sizeof(*s) * (slen + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (*(s + start) && i < len && start < ft_strlen(s))
+	{
+		str[i] = *(char *)(s + start);
+		i++;
+		s++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 /*
 int main(void)
 {
-    char const *s = "Je suis un humain";
-    unsigned int start = 3;
-    size_t len = 188;
-    printf("%s", ft_substr(s,start,len));
-    return (0);
+	char const		*s = "hola";
+	unsigned int	start = 2;
+	size_t			len = 1;
+	printf("%s", ft_substr(s,start,len));
+	return (0);
 }
 */
