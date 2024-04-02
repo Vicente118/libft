@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:06 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 17:13:10 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/02 20:17:18 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_strlcpy(char *destination, char *source, size_t dstsize)
 	srclen = ft_strlen(source);
 	if (!destination || !source)
 		return (0);
+	if (dstsize == 0)
+		return (srclen);
 	while (*source && dstsize - 1 > 0)
 	{
 		*destination = *source;
