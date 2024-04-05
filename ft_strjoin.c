@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:01 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 18:55:50 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/05 14:29:09 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 
 	i = 0;
-	if(!s1 || !s2 )
+	if (!s1 || !s2)
 		return (NULL);
 	len = (ft_strlen(s1) + ft_strlen(s2));
 	result = malloc((len + 1) * sizeof(char));

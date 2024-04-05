@@ -6,78 +6,48 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:13 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 17:14:35 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:31:07 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_char(char const *s1, char const *set)
+static int	is_set(char c, char const *set)
 {
-	char	*str1;
-	char	*str2;
-	size_t	i;
+	int	i;
 
-	str1 = (char *) s1;
-	i = ft_strlen(str1);
-	while (*str1)
+	i = 0;
+	while (set[i])
 	{
-		str2 = (char *) set;
-		while (*str2)
-		{
-			if (*str1 == *str2)
-			{
-				i--;
-				break ;
-			}
-			str2++;
-		}
-		str1++;
+		if (set[i] == c)
+			return (1);
+		i++;
 	}
-	return (i);
-}
-
-static int	check_char(char c, char const *set)
-{
-	while (*set)
-	{
-		if (c == *set)
-		{
-			return (0);
-		}
-		set++;
-	}
-	return (1);
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*new_str;
-	char	*str1;
-	size_t	i;
+	size_t	start;
+	size_t	end;
 
-	new_str = malloc(count_char(s1, set) * sizeof(char) + 1);
-	str1 = (char *) s1;
-	i = 0;
-	if (!s1 || !set || !new_str)
+	if (!s1 || !set)
 		return (NULL);
-	while (*str1)
-	{
-		if (check_char(*str1, set) == 1)
-		{
-			new_str[i] = *str1;
-			i++;
-		}
-		str1++;
-	}
-	new_str[i] = '\0';
-	return (new_str);
+	start = 0;
+	end = ft_strlen(s1);
+	while (is_set(s1[start], set))
+		start++;
+	if (start == end)
+		return (ft_strdup(""));
+	while (is_set(s1[end - 1], set))
+		end--;
+	return (ft_substr(s1, start, end - start));
 }
 /*
 int main(void)
 {
-	char const *s1 = "Je suis un! humain";
-	char const *s2 = "!Jsn";
+	char const *s1 = "Je suis un humain ! ";
+	char const *s2 = " n!";
 	printf("%s", ft_strtrim(s1,s2));
 	return (0);
 }

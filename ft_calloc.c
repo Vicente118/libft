@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:25 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 16:30:19 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/05 17:12:40 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 void	*ft_calloc(size_t n, size_t size)
 {
 	void	*ptr;
-	int		i;
+	size_t	i;
 
 	i = 0;
+	if (n == 0 || size == 0)
+	{
+		n = 1;
+		size = 1;
+	}
 	ptr = malloc(n * size);
 	if (!ptr)
 		return (NULL);
-	while (i < n)
-	{
-		*(int *)(ptr + i) = 0;
-		i++;
-	}
+	ft_bzero(ptr, n * size);
 	return (ptr);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:09 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 17:13:27 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:01:16 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 	if (!str1 || !str2)
 		return (0);
 	i = 1;
+	if (n == 0)
+		return (0);
 	while (*str1 && (*str1 == *str2) && i < n)
 	{
 		str1++;
 		str2++;
 		i++;
 	}
-	return (*str1 - *str2);
+	return (*(unsigned char *)str1 - *(unsigned char *)str2);
 }
 /*
 int main(void)

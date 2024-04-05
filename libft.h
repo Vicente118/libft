@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:23:08 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 18:38:13 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/05 14:30:01 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,11 @@ void		ft_putnbr_fd(int n, int fd);
 
 // PROTOTYPES BONUS
 t_list		*ft_lstnew(void *content);
-void    	ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_front(t_list **lst, t_list *new);
 int			ft_lst_size(t_list *lst);
 t_list		*ft_lst_last(t_list *lst);
-void    	ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
-
 
 #endif

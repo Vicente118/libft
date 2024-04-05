@@ -12,7 +12,7 @@ SRCS =  ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c\
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strlcat.c ft_strmapi.c ft_striteri.c
 
 BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lst_last.c \
-			 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+			 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,19 +24,19 @@ RANLIB = ranlib
 
 RM = rm -f
 
-all : $(NAME)
+
+.c.o : $(SRCS) $(BONUS_SRCS)
+	${CC} ${CFLAGS} -c -o $@ $^
 
 $(NAME) : $(OBJS)
 	$(ARRC) $(NAME) $(OBJS)
 	$(RANLIB) $(NAME)
 
-$(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS) -o $(OBJS)
-
-bonus : $(BONUS_SRCS)
-	$(CC) $(CFLAGS) -c $(BONUS_SRCS) -o $(BONUS_OBJS)
-	$(ARRC) $(NAME) $(BONUS_OBJS)
+bonus : $(OBJS) $(BONUS_OBJS)
+	$(ARRC) $(NAME) $^
 	$(RANLIB) $(NAME)
+
+all : $(NAME)
 
 clean :
 	$(RM) $(OBJS) $(BONUS_OBJS)

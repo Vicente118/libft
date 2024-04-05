@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:43 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 16:27:44 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/05 15:09:41 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 void	*ft_memcpy(void *destination, const void *source, size_t size)
 {
 	size_t	i;
+	char	*dst;
+	char	*src;
 
 	if (!destination || !source)
 		return (NULL);
+	dst = (char *) destination;
+	src = (char *) source;
 	i = 0;
-	while (i <= size)
+	while (i < size)
 	{
-		*(char *)(destination + i) = *(char *)(source + i);
+		dst[i] = src[i];
 		i++;
 	}
 	return (destination);
@@ -36,3 +40,4 @@ int main(void)
 		printf("%c", final[i]);
 	return (0);
 }
+*/
