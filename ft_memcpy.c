@@ -21,7 +21,7 @@ void	*ft_memcpy(void *destination, const void *source, size_t size)
 	i = 0;
 	while (i <= size)
 	{
-		*(unsigned char *)(destination + i) = *(unsigned char *)(source + i);
+		*(char *)(destination + i) = *(char *)(source + i);
 		i++;
 	}
 	return (destination);
@@ -29,11 +29,10 @@ void	*ft_memcpy(void *destination, const void *source, size_t size)
 /*
 int main(void)
 {
-	char *str = "abcdef";
+	char *str = "gsgsrfr";
 	char str1[35];
-	char *final = ft_memcpy(str1, str, sizeof(str) + 1);
-	for(int i = 0; i < 6; i++)
+	char *final = ft_memcpy(str1, str, sizeof(str));
+	for(int i = 0; i < 7; i++)
 		printf("%c", final[i]);
 	return (0);
 }
-*/
