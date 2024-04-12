@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:18:11 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/05 16:54:16 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/08 12:55:51 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_itoa(int n)
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (n == 0)
-		return ("0");
+		return (ft_strdup("0"));
 	result = malloc(sizeof(char) * (length + 1));
 	if (!result)
 		return (NULL);
@@ -62,7 +62,10 @@ char	*ft_itoa(int n)
 /*
 int main(void)
 {
-	printf("%s", ft_itoa(-4465161));
+	printf("%s\n", ft_itoa(10));
+	printf("%s\n", ft_itoa(-10));
+	printf("%s\n", ft_itoa(-9));
+
 	return (0);
 }
 */

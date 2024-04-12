@@ -28,7 +28,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (i < len)
 	{
 		if (i < ft_strlen(s1))
-			result[i] = *(const char *)(s1 + i);
+			result[i] = *(char *)(s1 + i);
 		if (i >= ft_strlen(s1))
 			result[i] = *(char *)(s2 + i - ft_strlen(s1));
 		i++;

@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 16:27:50 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/11 15:05:54 by vdarras          ###   ########.fr       */
+/*   Created: 2024/04/08 13:16:13 by vdarras           #+#    #+#             */
+/*   Updated: 2024/04/08 14:28:02 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!s)
-		return ;
-	while (*s)
+	t_list	*new;
+	t_list	*node;
+
+	if (!lst || !f || !del)
+		return (NULL);
+	new = NULL;
+	while (lst)
 	{
-		write(fd, s, 1);
-		s++;
+		node = ft_lstnew(f(lst->content));
+		if (!node)
+		{
+			ft_lstclear(&node, (*del));
+			return (NULL);
+		}
+		ft_lstadd_back((&new), node);
+		lst = lst->next;
 	}
-	write(fd, "\n", 1);
+	return (new);
 }
-/*
-int main(void)
-{
-	return (0);
-}
-*/

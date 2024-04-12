@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:43 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/05 15:09:41 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 17:32:32 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_memcpy(void *destination, const void *source, size_t size)
 {
-	size_t	i;
-	char	*dst;
-	char	*src;
+	size_t			i;
+	unsigned char	*dst;
+	unsigned char	*src;
 
-	if (!destination || !source)
+	if (!destination && !source)
 		return (NULL);
-	dst = (char *) destination;
-	src = (char *) source;
+	dst = (unsigned char *) destination;
+	src = (unsigned char *) source;
 	i = 0;
 	while (i < size)
 	{

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:23:08 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/05 14:30:01 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 17:33:58 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <limits.h>
 
 // STRUCTURES
 typedef struct s_list
@@ -39,8 +40,8 @@ void		*ft_memset(void *ptr, int value, size_t count);
 void		ft_bzero(void *ptr, size_t count);
 void		*ft_memcpy(void *destination, const void *source, size_t size);
 void		*ft_memmove(void *destination, const void *source, size_t size);
-size_t		ft_strlcpy(char *destination, char *source, size_t size);
-size_t		ft_strlcat(char *destination, char *source, size_t size);
+size_t		ft_strlcpy(char *destination, const char *source, size_t size);
+size_t		ft_strlcat(char *destination, const char *source, size_t size);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 char		*ft_strchr(const char *str, int c);
@@ -69,10 +70,12 @@ void		ft_putnbr_fd(int n, int fd);
 // PROTOTYPES BONUS
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
-int			ft_lst_size(t_list *lst);
-t_list		*ft_lst_last(t_list *lst);
+int			ft_lstsize(t_list *lst);
+t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
+void		ft_lstiter(t_list *lst, void (*f)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

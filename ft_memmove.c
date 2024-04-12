@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:45 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 16:35:32 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/08 17:48:22 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	*ft_memmove(void *destination, const void *source, size_t size)
 	unsigned char	*dest;
 	unsigned char	*src;
 
-	dest = (unsigned char *) destination;
-	src = (unsigned char *) source;
 	if (!destination || !source)
 		return (NULL);
+	dest = (unsigned char *) destination;
+	src = (unsigned char *) source;
 	i = 0;
 	if (dest > src)
 	{
@@ -42,7 +42,7 @@ void	*ft_memmove(void *destination, const void *source, size_t size)
 int main (void)
 {
 	char    str[40] = "je suis un humain";
-	char    *dest = ft_memmove(str + 2, str, sizeof(char) * 5);
+	char    *dest = ft_memmove(str, str + 4, 5);
 	printf("%s", dest);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:47 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 16:35:48 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/08 18:53:17 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,20 @@ void	*ft_memset(void *ptr, int value, size_t count)
 /*
 int main(void) 
 {
-	char array[] = {'C','D', 'e', 'z', 'g'};
-	size_t size = sizeof(int) * 5;
+	char array[] = "abcde";
+	size_t size = sizeof(char) * 5;
 	int length;
-
 	for(length = 0; length < 5; length++) 
 	{
 		printf( "%c ", array[length]);
 	}
 	printf("\n");
-
-	ft_memset(array, 35, size);
-
+	ft_memset(array, 122, size);
 	for(length = 0; length < 5; length++) 
 	{
 		printf("%c ", array[length]);
 	}
 	printf("\n");
-	
 	return (0);
 }
 */

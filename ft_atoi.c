@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:18 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 16:29:29 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 15:04:22 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	signe;
+	long int	i;
+	long int	res;
+	int			signe;
 
 	i = 0;
 	res = 0;
 	signe = 1;
+	if (!str)
+		return (0);
 	if (str[0] == '\0')
 		return (0);
 	while (str[i] >= 9 && str[i] <= 13 || str[i] == 32)
@@ -34,17 +36,22 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + (str[i] - '0');
+		if (res > INT_MAX)
+			return (-1);
+		else if (res < INT_MIN)
+			return (0);
 		i++;
 	}
 	return (res * signe);
 }
 /*
-int main(void)
+int main(int argc, char **argv)
 {
-    const char *str = "\t  \n -26621556a15";
-
-
-    printf("%i", ft_atoi(str));
-    return (0);
+	if (argc == 2) 
+	{
+		printf("le mien: [%d]\n", ft_atoi(argv[1]));
+		printf("le pas mien: [%d]\n", atoi(argv[1]));
+	}
+    return (0);	
 }
 */
