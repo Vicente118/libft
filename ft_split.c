@@ -35,7 +35,7 @@ static size_t	count_words(char const *s, char c)
 	return (words);
 }
 
-static char	*ft_word(char *str, char charset)
+static char	*each_word(char *str, char charset)
 {
 	int		len_word;
 	int		i;
@@ -58,9 +58,9 @@ static char	*ft_word(char *str, char charset)
 	return (word);
 }
 
-static char	*ft_put_word(char *str, char c, int i, char **string)
+static char	*word_in_string(char *word, char c, int i, char **string)
 {
-	string[i] = ft_word(str, c);
+	string[i] = each_word(word, c);
 	if (!string[i])
 	{
 		while (i >= 0)
@@ -75,7 +75,7 @@ static char	*ft_put_word(char *str, char c, int i, char **string)
 
 static int	ft_set_word(char **strings, char *str, int i, char c)
 {
-	strings[i] = ft_put_word(str, c, i, strings);
+	strings[i] = word_in_string(str, c, i, strings);
 	if (!strings[i])
 	{
 		free(strings);
@@ -92,6 +92,8 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	str = (char *)s;
+	if (!str)
+		return (NULL);
 	strings = (char **)malloc(sizeof(char *) * (count_words(str, c) + 1));
 	if (!strings)
 		return (NULL);

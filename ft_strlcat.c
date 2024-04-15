@@ -21,8 +21,6 @@ size_t	ft_strlcat(char *destination, const char *source, size_t size)
 	j = 0;
 	lendest = ft_strlen(destination);
 	lensrc = ft_strlen(source);
-	if (!destination || !source)
-		return (0);
 	if (size <= lendest)
 		return (size + lensrc);
 	while (lendest + j < size - 1 && source[j])

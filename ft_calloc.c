@@ -15,14 +15,10 @@
 void	*ft_calloc(size_t n, size_t size)
 {
 	void	*ptr;
-	size_t	i;
 	size_t	buffer;
 
-	i = 0;
 	buffer = n * size;
-	if (n == 0 || size == 0)
-		return(0);
-	if (size != buffer / n)
+	if (size != 0 && (buffer / size) != n)
 		return (NULL);
 	ptr = malloc(buffer);
 	if (!ptr)

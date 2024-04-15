@@ -19,8 +19,6 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t n)
 	char	*buff1;
 	char	*buff2;
 
-	if (!str1 || !str2)
-		return (NULL);
 	if (*str2 == '\0')
 		return ((char *) str1);
 	buff1 = (char *) str1;

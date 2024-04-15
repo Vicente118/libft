@@ -17,8 +17,6 @@ size_t	ft_strlcpy(char *destination, const char *source, size_t dstsize)
 	size_t	srclen;
 
 	srclen = ft_strlen(source);
-	if (!destination || !source)
-		return (0);
 	if (dstsize == 0)
 		return (srclen);
 	while (*source && dstsize - 1 > 0)

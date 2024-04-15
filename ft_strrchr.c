@@ -18,8 +18,6 @@ char	*ft_strrchr(const char *str, int c)
 	int		i;
 
 	buffer = NULL;
-	if (!str)
-		return (NULL);
 	i = ft_strlen(str);
 	if (!*(str + i) && (char)c == '\0')
 	{
