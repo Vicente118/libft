@@ -23,3 +23,14 @@ t_list	*ft_lstnew(void *content)
 	element->next = NULL;
 	return (element);
 }
+/*
+int main(void)
+{
+	t_list	*node;
+
+	node = ft_lstnew(ft_strdup("Hello"));
+	printf("%s", node->content);
+	free(node);
+	return (0);
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:58 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 16:28:00 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 15:05:20 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *source)
 	size_t	i;
 
 	i = 0;
+	if (!source)
+		return (NULL);
 	dest = (char *) malloc(ft_strlen((char *) source) * sizeof(char) + 1);
 	if (!dest)
 		return (NULL);

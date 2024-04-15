@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:13 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/05 16:31:07 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 14:51:03 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 int main(void)
 {
 	char const *s1 = "Je suis un humain ! ";
-	char const *s2 = " n!";
+	char const *s2 = " njfd!";
 	printf("%s", ft_strtrim(s1,s2));
 	return (0);
 }

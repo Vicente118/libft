@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:40 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 16:33:06 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 15:02:53 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memchr(const void *str, int c, size_t size)
 {
 	unsigned char	*buffer;
 
+	if (!str)
+		return (NULL);
 	buffer = (unsigned char *) str;
 	while (size--)
 	{

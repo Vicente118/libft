@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:12 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/05 15:55:11 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:41:45 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,21 @@ char	*ft_strrchr(const char *str, int c)
 	char	*buffer;
 	int		i;
 
-	i = 0;
+	buffer = NULL;
 	if (!str)
 		return (NULL);
-	if (c == '\0')
+	i = ft_strlen(str);
+	if (!*(str + i) && (char)c == '\0')
 	{
-		i = ft_strlen(str);
 		return ((char *)str + i);
 	}
 	while (*str)
 	{
 		if (*str == (char) c)
-		{
 			buffer = ((char *) str);
-			i = 1;
-		}
 		str++;
 	}
-	if (i == 1)
+	if (buffer)
 		return ((char *) buffer);
 	return (NULL);
 }

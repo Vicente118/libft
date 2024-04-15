@@ -9,7 +9,6 @@
 /*   Updated: 2024/04/02 18:40:23 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 static size_t	count_words(char const *s, char c)
@@ -36,69 +35,81 @@ static size_t	count_words(char const *s, char c)
 	return (words);
 }
 
-static char	*words(const char *s, char sep)
+static char	*ft_word(char *str, char charset)
 {
-	size_t	i;
-	size_t	j;
-	char	*new_s;
+	int		len_word;
+	int		i;
+	char	*word;
 
 	i = 0;
-	j = 0;
-	while (s[j] && s[j] != sep)
-		j++;
-	new_s = malloc((j + 1) * sizeof(char));
-	if (!new_s)
+	while (str[i] && str[i] != charset)
+		i++;
+	len_word = i;
+	i = 0;
+	word = (char *)malloc(sizeof(char) * (len_word + 1));
+	if (!word)
 		return (NULL);
-	while (i < j)
+	while (i < len_word)
 	{
-		new_s[i] = s[i];
+		word[i] = str[i];
 		i++;
 	}
-	new_s[i] = '\0';
-	return (new_s);
+	word[i] = '\0';
+	return (word);
 }
-// FREE FUNCTION IF MALLOC FAILS
 
-void	loop(const char **s, char c, int i)
+static char	*ft_put_word(char *str, char c, int i, char **string)
 {
-	if (i == 0)
+	string[i] = ft_word(str, c);
+	if (!string[i])
 	{
-		while (**s && **s == c)
-			(*s)++;
+		while (i >= 0)
+		{
+			free(string[i]);
+			i--;
+		}
+		return (NULL);
 	}
-	else
+	return (string[i]);
+}
+
+static int	ft_set_word(char **strings, char *str, int i, char c)
+{
+	strings[i] = ft_put_word(str, c, i, strings);
+	if (!strings[i])
 	{
-		while (**s && **s != c)
-			++*s;
+		free(strings);
+		return (0);
 	}
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	char	**array;
-	char	*word;
+	char	**strings;
+	char	*str;
+	int		i;
 
-	if (!s)
+	i = 0;
+	str = (char *)s;
+	strings = (char **)malloc(sizeof(char *) * (count_words(str, c) + 1));
+	if (!strings)
 		return (NULL);
-	array = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!array)
-		return (NULL);
-	i = -1;
-	array[count_words(s, c)] = NULL;
-	while (*s)
+	while (*str != '\0')
 	{
-		loop(&s, c, 0);
-		if (*s != '\0')
+		while (*str && *str == c)
+			str++;
+		if (*str)
 		{
-			word = words(s, c);
-			if (!word)
+			if (ft_set_word(strings, str, i, c) == 0)
 				return (NULL);
-			array[++i] = word;
+			i++;
 		}
-		loop(&s, c, 1);
+		while (*str && *str != c)
+			str++;
 	}
-	return (array);
+	strings[i] = 0;
+	return (strings);
 }
 /*
 int main(void)

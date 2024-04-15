@@ -6,13 +6,13 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:04 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/05 15:37:38 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/08 15:35:30 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *destination, char *source, size_t size)
+size_t	ft_strlcat(char *destination, const char *source, size_t size)
 {
 	size_t		j;
 	size_t		lendest;

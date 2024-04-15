@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:28:11 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/02 18:41:09 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/08 19:33:49 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t n)
 /*
 int main(void)
 {
-	const char *str1 = "";
-	const char *str2 = "vv";
-	printf("%s",ft_strnstr(str1, str2, 14));
+	const char *str1 = "Je suis un Humain";
+	const char *str2 = "Huma";
+	printf("%s",ft_strnstr(str1, str2, 15));
 	return (0);
 }
 */

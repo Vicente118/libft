@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:27:57 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/05 15:51:13 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:39:53 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ char	*ft_strchr(const char *str, int c)
 
 	if (!str)
 		return (NULL);
-	if (c == '\0')
-	{
-		index = ft_strlen(str);
-		return ((char *)str + index);
-	}
 	while (*str)
 	{
 		if (*str == (char) c)
@@ -31,14 +26,18 @@ char	*ft_strchr(const char *str, int c)
 		}
 		str++;
 	}
+	if (!*str && (char)c == '\0')
+	{
+		return ((char *) str);
+	}
 	return (NULL);
 }
 /*
 int main(void)
 {
-	const char *str = "Bonjour je suis un humain";
-	int c = 111;
-	printf("%s", ft_strchr(str, c));
+	const char *str = "teste";
+	int c = '\0';
+	printf("%p", ft_strchr(str, c));
 	return (0);
 }
 */
